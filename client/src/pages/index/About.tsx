@@ -5,10 +5,11 @@ function About(props: {}, ref: any) {
 
     const aboutMeLongDescription = `
         My name is Joao, I'm a Self-taught Software Developer who specializes in web development.
-        If I had to describe myself in one sentence I would say I'm passionate about learning.
+        The number one quality I like to tell everyone that comes across my profile is that I'm passionate about learning.
+        Learning for me has never been just about working, but all that I do and appreaciate in life.
     `
     const aboutMeLongDescription2 =`
-        Learning for me has never been just about working, but all that I do and appreaciate in life.
+
         Over these past few years I've put all my effort into collecting knowledge and
         improving my skills towards creating highly functional cool-looking websites.
     `

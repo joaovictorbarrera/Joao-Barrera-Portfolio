@@ -16,12 +16,12 @@
     text-transform: uppercase;
     font-size: 1.25rem;
     font-weight: 700;
-    color: white;
+    color: white !important;
 
 }
 
 .main-nav-btn.active {
-    color: var(--accent);
+    color: var(--accent) !important;
 }
 
 .hidden-navbar {
@@ -41,6 +41,7 @@
     background-color: var(--dark);
     border-bottom: solid .25rem var(--accent);
     pointer-events: all;
+    max-width: unset;
 }
 
 .hidden-navbar.open {

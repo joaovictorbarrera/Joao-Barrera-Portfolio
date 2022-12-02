@@ -11,7 +11,7 @@ function HiddenNavbar() {
 
     return (
         <div className={`hidden-navbar ${open ? 'open' : ''}`}>
-            <Navbar />
+            <Navbar isHidden={true} />
             <button onClick={toggleOpen} className='hide-nav-btn'></button>
         </div>
     )

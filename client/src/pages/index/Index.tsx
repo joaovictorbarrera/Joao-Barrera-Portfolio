@@ -13,16 +13,22 @@ function Index() {
   const projectsRef = React.useRef<HTMLElement>(null)
 
   useAppearOnIntersection([introRef, aboutRef, projectsRef])
-  const scrollAmount = useWindowScrollY()
 
   return (
-    <div style={{backgroundPosition: `${0.1 * scrollAmount}px`}} className='index-page galaxy-background'>
+    <div className='index-page'>
+      <GalaxyBackground />
       <Navbar />
       <Introduction ref={introRef} />
       <About ref={aboutRef} />
       <Projects ref={projectsRef} />
     </div>
   )
+}
+
+// So hook doesnt re-render the entire page....
+function GalaxyBackground() {
+  const scrollAmount = useWindowScrollY()
+  return <div style={{backgroundPosition: `${0.1 * scrollAmount}px`}} className='galaxy-background' />
 }
 
 export default Index

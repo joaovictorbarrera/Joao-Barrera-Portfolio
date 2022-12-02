@@ -3,7 +3,6 @@
     width: 100%;
     min-height: 100vh;
     height: 100%;
-    background-color: var(--dark);
     color: white;
     color-scheme: dark;
     display: flex;
@@ -15,6 +14,10 @@
 
 .galaxy-background {
     background-image: url('/galaxy-background.jpg');
+    width: 150%;
+    height: 150%;
+    position: fixed;
+    z-index: -1;
 }
 
 .introduction {
@@ -91,7 +94,7 @@
     align-items: center;
     justify-content: center;
 
-    padding: 2rem;
+    padding: 1rem;
 }
 
 .about > div {
@@ -122,7 +125,6 @@
     font-size: 1.5rem;
     gap: 1rem;
     word-wrap: break-word;
-    text-shadow: 0 0 .25rem black, 0 0 .25rem black, 0 0 .25rem black, 0 0 .25rem black;
 }
 
 .about-description > h2 {
@@ -170,8 +172,13 @@
     background-color: var(--dark);
 }
 
-.project-card a{
+.project-card a {
     color: var(--accent) !important;
+}
+
+.project-card a.unavailable {
+    color: red !important;
+    pointer-events: none;
 }
 
 .project-card > .content {
