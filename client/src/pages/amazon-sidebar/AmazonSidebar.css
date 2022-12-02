@@ -1,0 +1,163 @@
+@font-face {
+    font-family: "amazonEmber";
+    src: url("/Ember/AmazonEmber_Rg.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+.amazon-sidebar-page {
+    --sidebar-width: 365px;
+    font-size: 1.25rem;
+}
+
+.navbar {
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 56px;
+    box-shadow: 1px 1px 20px 1px black;
+}
+
+.navbar .items {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+
+.open-sidebar-btn {
+    all:initial;
+    margin: 0 20px 0 20px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.change-theme-btn {
+    all:initial;
+    font-size: 1.5em;
+    margin-left: auto;
+    margin-right: 20px;
+    cursor: pointer;
+    background-color: #232f3e;
+    border-radius: 100px;
+}
+
+aside.sidebar {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    font-family: "amazonEmber", Arial, serif;
+    pointer-events: none;
+}
+
+aside.sidebar .window {
+    transition: all 0.3s ease-in;
+    transform: translateX(-110%);
+    position: absolute;
+    height: 100%;
+    width: var(--sidebar-width, 365px);
+    z-index: 10;
+    box-shadow: 0px 0px 10px 1px black;
+    pointer-events: none;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 5% 95%;
+}
+
+aside.sidebar .window .items {
+    overflow: scroll;
+}
+
+aside.sidebar.active .window {
+    visibility: visible;
+    transform: translateX(0);
+    pointer-events: all;
+}
+
+aside.sidebar.active .shade {
+    opacity: 0.8;
+    transition: opacity 0.25s;
+    pointer-events: all;
+}
+
+aside.sidebar .shade {
+    background-color: black;
+    z-index: 9;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+aside.sidebar .shade .close-sidebar-btn {
+    font-family: initial;
+    color: white !important;
+    font-size: 2.25em;
+    position: absolute;
+    top: 4px;
+    left: 377px;
+    z-index: 9;
+}
+
+aside.sidebar.active .shade .close-sidebar-btn {
+    cursor: pointer;
+}
+
+aside.sidebar ul {
+    list-style: none;
+}
+
+aside.sidebar li:first-child {
+    padding-top: 13px;
+    padding-bottom: 5px;
+    font-weight: bold;
+    font-size: 0.945em;
+}
+
+aside.sidebar li {
+    font-size: 0.7em;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-left: 36px;
+}
+
+aside.sidebar li:not(:first-child):hover {
+    backdrop-filter: brightness(0.9);
+    cursor: pointer;
+}
+
+aside.sidebar hr {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+aside.sidebar hr {
+    opacity: 0.5;
+}
+
+aside.sidebar header {
+    margin-bottom: 7px;
+    display: flex;
+    background-color: #232f3e !important;
+    align-items: center;
+    font-size: 0.945em;
+    font-weight: bold;
+    position: relative;
+}
+
+aside.sidebar header .icon {
+    background-image: url(https://images-na.ssl-images-amazon.com/images/G/01/gno/sprites/nav-sprite-global-1x-hm-dsk-reorg._CB405937547_.png);
+    background-position: -137px -340px;
+    height: 25px;
+    width: 27px;
+    margin-left: 36px;
+    margin-right: 10px;
+}
+
+aside.sidebar header .profile-name {
+    color: white !important;
+}

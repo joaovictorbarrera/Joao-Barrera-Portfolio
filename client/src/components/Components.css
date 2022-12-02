@@ -1,0 +1,70 @@
+.main-nav {
+    width: 100%;
+    height: var(--navbar-height);
+
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 1rem 10rem;
+
+    transition: box-shadow 500ms;
+}
+
+.main-nav-btn {
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: white;
+
+}
+
+.main-nav-btn.active {
+    color: var(--accent);
+}
+
+.hidden-navbar {
+    position: absolute;
+    z-index: 100;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    translate: 0 -3.85rem;
+    pointer-events: none;
+
+    transition: translate 250ms;
+}
+
+.hidden-navbar > .main-nav {
+    background-color: var(--dark);
+    border-bottom: solid .25rem var(--accent);
+    pointer-events: all;
+}
+
+.hidden-navbar.open {
+    translate: 0 0;
+}
+
+.hidden-navbar.open > .main-nav {
+    box-shadow: 0 0 3rem .25rem black;
+}
+
+.hide-nav-btn {
+    rotate: 45deg;
+    translate: 0 -55%;
+    background-color: var(--dark);
+    width: 1.5rem;
+    height: 1.5rem;
+    border-bottom: solid .25rem var(--accent);
+    border-right: solid .25rem var(--accent);
+    pointer-events: all;
+}
+
+.accent-btn {
+    background-color: var(--accent);
+    color: black;
+    font-weight: 600;
+    padding: 1rem;
+    border-radius: 1rem;
+    white-space: nowrap;
+}
