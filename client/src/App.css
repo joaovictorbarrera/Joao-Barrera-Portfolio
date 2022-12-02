@@ -13,24 +13,24 @@
     --navbar-height: 4rem;
 }
 
-a {
+div a {
     text-decoration: none !important;
     color: currentColor;
 }
 
-a:hover {
+div a:hover {
     filter: brightness(80%);
 }
 
-a:visited {
+div a:visited {
     color: currentColor;
 }
 
-ul {
+div ul {
     list-style: none;
 }
 
-button {
+div button {
     background: none;
     border: none;
     font-size: 1rem;
