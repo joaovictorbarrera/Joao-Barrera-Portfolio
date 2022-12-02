@@ -5,7 +5,9 @@
     display: flex;
     justify-content: flex-end;
     gap: 1rem;
-    padding: 1rem 10rem;
+    padding: 1rem 2rem;
+    max-width: 85rem;
+    width: 100%;
 
     transition: box-shadow 500ms;
 }
@@ -67,4 +69,10 @@
     padding: 1rem;
     border-radius: 1rem;
     white-space: nowrap;
+}
+
+@media screen and (max-width: 800px) {
+    .main-nav {
+        justify-content: center;
+    }
 }

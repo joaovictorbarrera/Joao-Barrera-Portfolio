@@ -71,38 +71,37 @@ interface ProjectCardProps {
 }
 
 function ProjectCard({ project }: ProjectCardProps) {
-
-  // if (project.redirectIsExternal) {
-  //   return (
-  //     <div className="project-card">
-  //         <a href={project.redirectLink} target="_blank">
-  //           <img src={project.previewImage} alt={`${project.title} preview image`} />
-  //         </a>
-  //         <span>{project.title}</span>
-  //         <p>{project.shortDescription}</p>
-  //         <div style={{display: "flex", gap:"1rem"}}>
-  //           <a href={project.redirectLink} target="_blank"><AccentButton text="View Project Live" /></a>
-  //           <a href={project.sourceCodeLink} target="_blank"><AccentButton text="View Source Code" /></a>
-  //         </div>
-  //       </div>
-  //   )
-  // }
-
   return (
     <div className="project-card">
-        <Link to={project.redirectLink}>
+        <CorrectedLink link={project.redirectLink} isExternal={project.redirectIsExternal}>
           <img src={project.previewImage} alt={`${project.title} preview image`} />
-        </Link>
+        </CorrectedLink>
         <div className='content'>
           <span>{project.title}</span>
           <p>{project.shortDescription}</p>
           <div style={{display: "flex", gap:"1rem"}}>
-            <Link to={project.redirectLink}>View Project Live</Link>
+            <CorrectedLink link={project.redirectLink} isExternal={project.redirectIsExternal}>
+              View Project Live
+            </CorrectedLink>
             <a href={project.sourceCodeLink} target="_blank">View Source Code</a>
           </div>
         </div>
       </div>
   )
+}
+
+interface CorrectedLinkProps {
+  isExternal?: boolean,
+  link: string,
+  children: React.ReactNode
+}
+
+function CorrectedLink({isExternal, link, children}: CorrectedLinkProps) {
+  if (isExternal) {
+    return <a href={link} target="_blank">{children}</a>
+  }
+
+  return <Link to={link}>{children}</Link>
 }
 
 export default React.forwardRef(Projects)
