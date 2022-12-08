@@ -1,6 +1,7 @@
 import {useEffect} from 'react'
 
 function useAppearOnIntersection(elements: React.RefObject<HTMLElement>[]) {
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
         entry.target.classList.toggle("show", entry.isIntersecting)

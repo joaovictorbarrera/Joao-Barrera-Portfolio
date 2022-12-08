@@ -5,7 +5,7 @@ interface AccentButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement
 }
 
 function AccentButton({text, ...props}: AccentButtonProps) {
-  console.log({text, ...props})
+  // console.log({text, ...props})
   return (
     <button className='accent-btn' {...props}>
       {text}

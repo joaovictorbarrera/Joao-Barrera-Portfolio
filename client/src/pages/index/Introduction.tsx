@@ -1,7 +1,7 @@
 import React from 'react'
 import { BsGithub, BsLinkedin } from "react-icons/bs"
+import { Link } from 'react-router-dom'
 import AccentButton from '../../components/AccentButton'
-import scrollTo from '../../util/scrollTo'
 
 function Introduction(props: {}, ref: any) {
     return (
@@ -16,7 +16,7 @@ function Introduction(props: {}, ref: any) {
                 <li><a href={window.portfolio.github || 'github.com'} target="_blank" className='intro-icon'><BsGithub /></a></li>
                 <li><a href={window.portfolio.linkedin || 'linkedin.com'} target="_blank" className='intro-icon'><BsLinkedin /></a></li>
             </ul>
-            <AccentButton onClick={() => scrollTo("#about")} text="Learn more..." />
+            <Link to="/?scrollTo=about"><AccentButton text="Learn more..." /></Link>
         </section>
     )
 }

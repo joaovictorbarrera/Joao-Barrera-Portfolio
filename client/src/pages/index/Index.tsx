@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../../components/Navbar'
 import useAppearOnIntersection from '../../hooks/useAppearOnIntersection'
+import useScrollOnRedirect from '../../hooks/useScrollOnRedirect'
 import useWindowScrollY from '../../hooks/useWindowScrollY'
 import About from './About'
 import "./Index.css"
@@ -13,6 +14,9 @@ function Index() {
   const projectsRef = React.useRef<HTMLElement>(null)
 
   useAppearOnIntersection([introRef, aboutRef, projectsRef])
+  useScrollOnRedirect([introRef, aboutRef, projectsRef])
+
+  // useEffect(() => console.log("rendered"))
 
   return (
     <div className='index-page'>
