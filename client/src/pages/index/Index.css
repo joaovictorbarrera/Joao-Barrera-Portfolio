@@ -164,12 +164,13 @@
 
 .project-card {
     display: flex;
-    max-width: 350px;
+    width: 350px;
     height: 100%;
     border-radius: .25rem;
     overflow: hidden;
     flex-direction: column;
     background-color: var(--dark);
+    border: 1px solid green;
 }
 
 .project-card a {
@@ -183,6 +184,7 @@
 
 .project-card > .content {
     padding: .5rem 1rem;
+    height: calc(100% - 200px);
 }
 
 .project-card > .content > span {

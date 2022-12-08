@@ -3,6 +3,7 @@ import { json, Link } from 'react-router-dom'
 import AccentButton from '../../components/AccentButton'
 
 interface ProjectCard {
+  disabled?: boolean,
   previewImage: string,
   title: string,
   shortDescription: string,
@@ -43,6 +44,7 @@ function Projects(props: {}, ref: any) {
       sourceCodeLink: "https://github.com/joaovictorbarrera/Toggle-Buttons"
     },
     {
+      disabled: true,
       previewImage: "/projects/quicksort-visualizer-thumbnail.png",
       title: "Quicksort Visualizer",
       shortDescription: "See how quicksort really works with this visualizer tool.",
@@ -55,11 +57,18 @@ function Projects(props: {}, ref: any) {
     <section ref={ref} className='projects' id='projects'>
         <h2>Projects</h2>
         <div className='projects-cards-grid-wrapper'>
-        {
-          projects.map(project =>
-            <ProjectCard key={JSON.stringify(project)} project={project} />
-          )
-        }
+          {
+            projects.map(project => {
+              return !project.disabled ? <ProjectCard key={JSON.stringify(project)} project={project} /> : null
+            })
+          }
+          <div className="project-card" style={{opacity: "80%", filter: "brightness(90%)", border: "1px dashed yellow"}}>
+              <div style={{backgroundColor: "#222", height: "200px"}}></div>
+              <div style={{backgroundColor: "hsl(0, 0%, 10%)"}} className="content">
+                <span>WIP</span>
+                <p>More will be added soon...</p>
+              </div>
+          </div>
         </div>
     </section>
   )
@@ -88,7 +97,7 @@ function ProjectCard({ project }: ProjectCardProps) {
             <a href={project.sourceCodeLink} className={`${!project.sourceCodeLink ? "unavailable" : ""}`} target="_blank">View Source Code</a>
           </div>
         </div>
-      </div>
+    </div>
   )
 }
 
