@@ -4,7 +4,8 @@ function useAppearOnIntersection(elements: React.RefObject<HTMLElement>[]) {
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-        entry.target.classList.toggle("show", entry.isIntersecting)
+            if (!entry.target.classList.contains("show"))
+            entry.target.classList.toggle("show", entry.isIntersecting)
         })
     }, {threshold: 0})
 

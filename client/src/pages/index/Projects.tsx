@@ -45,6 +45,22 @@ function Projects(props: {}, ref: any) {
     },
     {
       disabled: true,
+      previewImage: "/projects/sample.png",
+      title: "Provider's App",
+      shortDescription: "Web App to manipulate, process, and display data for company providers.",
+      redirectLink: "/providers-app",
+      sourceCodeLink: "https://github.com/joaovictorbarrera/ProvidersApp"
+    },
+    {
+      disabled: true,
+      previewImage: "/projects/sample.png",
+      title: "Login Page",
+      shortDescription: "Advanced auth system for registering/login.",
+      redirectLink: "/login-page",
+      sourceCodeLink: "https://github.com/joaovictorbarrera/login-page"
+    },
+    {
+      disabled: true,
       previewImage: "/projects/quicksort-visualizer-thumbnail.png",
       title: "Quicksort Visualizer",
       shortDescription: "See how quicksort really works with this visualizer tool.",
@@ -90,7 +106,7 @@ function ProjectCard({ project }: ProjectCardProps) {
         <div className='content'>
           <span>{project.title}</span>
           <p>{project.shortDescription}</p>
-          <div style={{display: "flex", gap:"1rem"}}>
+          <div style={{display: "flex", gap:"1rem", marginTop: "auto"}}>
             <CorrectedLink link={project.redirectLink} isExternal={project.redirectIsExternal}>
               View Project Live
             </CorrectedLink>

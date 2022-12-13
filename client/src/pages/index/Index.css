@@ -4,12 +4,10 @@
     min-height: 100vh;
     height: 100%;
     color: white;
-    color-scheme: dark;
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    padding-bottom: 10rem;
 }
 
 .galaxy-background {
@@ -132,7 +130,7 @@
 }
 
 .about-contact {
-    border: .25rem solid var(--accent);
+    border: .2rem solid var(--accent);
     border-radius: .5rem;
     display: flex;
     padding: 1rem;
@@ -185,6 +183,9 @@
 .project-card > .content {
     padding: .5rem 1rem;
     height: calc(100% - 200px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .project-card > .content > span {
@@ -195,6 +196,130 @@
 .project-card img {
     width: 100%;
 }
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.contact > form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.25rem;
+
+    gap: .5em;
+    padding: 1em;
+}
+
+.contact textarea {
+    resize: vertical;
+    min-height: 10em;
+}
+
+.contact input, .contact textarea {
+    font-size: 1.5rem;
+    padding: .5em;
+    width: 100%;
+}
+
+.contact input:focus-visible, .contact textarea:focus-visible {
+    outline: none;
+    filter: brightness(90%);
+}
+
+.contact fieldset {
+    display: flex;
+    gap: 1em;
+    width: 100%;
+}
+
+.contact label {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.25rem;
+}
+
+.contact label > * {
+    border: .1em solid var(--accent);
+}
+
+.contact button {
+    width: 10em;
+}
+
+.contact .statusMessage {
+    display: flex;
+    align-items: center;
+    color: white;
+    gap: .25rem;
+}
+
+.contact .statusMessage.success {
+    color: hsl(120, 100%, 50%);
+}
+
+.contact .statusMessage.error {
+    color: hsl(0, 100%, 50%);
+}
+
+.index-footer {
+    background-color: var(--dark);
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-block: 4rem 2rem;
+
+    background-image: url("/footer.jpg");
+    background-repeat: repeat;
+}
+
+
+.index-footer .content {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    align-items: center;
+    gap: 2rem;
+}
+
+.index-footer nav {
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.index-footer .name {
+    font-size: 3rem;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: .5rem;
+}
+
+.index-footer .name::before {
+    position: absolute;
+    color: var(--accent);
+    font-size: 1rem;
+    content: "Web Developer";
+    top: -.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.index-footer .outro {
+    line-height: 2;
+    color: #ddd;
+}
+
 
 @media screen and (max-width: 1300px) {
     .about-contact {

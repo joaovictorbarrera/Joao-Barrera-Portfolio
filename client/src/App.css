@@ -11,6 +11,7 @@
     --accent: hsl(146, 100%, 50%);
     --dark: hsl(0, 0%, 10%);
     --navbar-height: 4rem;
+    color-scheme: dark;
 }
 
 a {
@@ -35,6 +36,10 @@ button {
     border: none;
     font-size: 1rem;
     cursor: pointer;
+}
+
+fieldset {
+    border: none;
 }
 
 .intersect-show {

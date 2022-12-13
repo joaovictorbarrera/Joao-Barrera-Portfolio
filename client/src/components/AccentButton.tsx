@@ -1,13 +1,14 @@
 import React from 'react'
 
 interface AccentButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    text: string
+    text: string,
+    variant ?: string
 }
 
-function AccentButton({text, ...props}: AccentButtonProps) {
-  // console.log({text, ...props})
+function AccentButton({text, variant, ...props}: AccentButtonProps) {
+
   return (
-    <button className='accent-btn' {...props}>
+    <button className={`accent-btn ${variant ? variant : ''}`} type={props.type ? props.type : "button"} {...props}>
       {text}
     </button>
   )

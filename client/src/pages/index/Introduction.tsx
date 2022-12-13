@@ -5,7 +5,7 @@ import AccentButton from '../../components/AccentButton'
 
 function Introduction(props: {}, ref: any) {
     return (
-        <section ref={ref} className='introduction'>
+        <section ref={ref} className='introduction' id="introduction">
             <picture className='pfp-wrapper'>
             <img src="/profile.jpg" alt="my profile picture, me" />
             </picture>

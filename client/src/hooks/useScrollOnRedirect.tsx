@@ -19,6 +19,8 @@ function useScrollOnRedirect(elements: React.RefObject<HTMLElement>[]) {
 
                 return () => clearTimeout(timeout)
             }
+        } else {
+            window.scrollTo({top: 0, behavior: "smooth"})
         }
     }, [elements, search])
 }
