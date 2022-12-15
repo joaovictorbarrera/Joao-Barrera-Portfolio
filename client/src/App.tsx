@@ -6,6 +6,7 @@ import "./App.css"
 import QuicksortVisualizer from "./pages/quicksort-visualizer/QuicksortVisualizer"
 import ReactShoppingCart from "./pages/react-shopping-cart/ReactShoppingCart"
 import ProjectLayout from "./layouts/ProjectLayout"
+import ProvidersApp from "./pages/providers-app/ProvidersApp"
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route path="/" element={<Index />}/>
       <Route path="/" element={<ProjectLayout />} >
         <Route path="amazon-sidebar" element={<AmazonSidebar />}/>
+        <Route path="providers-app" element={<ProvidersApp />}/>
         <Route path="toggle-buttons" element={<ToggleButtons />}/>
         <Route path="quicksort-visualizer" element={<QuicksortVisualizer />}/>
         <Route path="react-shopping-cart" element={<ReactShoppingCart />}/>

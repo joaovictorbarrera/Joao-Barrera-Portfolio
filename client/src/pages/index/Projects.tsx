@@ -44,8 +44,7 @@ function Projects(props: {}, ref: any) {
       sourceCodeLink: "https://github.com/joaovictorbarrera/Toggle-Buttons"
     },
     {
-      disabled: true,
-      previewImage: "/projects/sample.png",
+      previewImage: "/projects/providers-app-thumbnail.png",
       title: "Provider's App",
       shortDescription: "Web App to manipulate, process, and display data for company providers.",
       redirectLink: "/providers-app",
