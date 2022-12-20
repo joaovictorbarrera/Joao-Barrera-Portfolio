@@ -27,7 +27,7 @@ function Projects(props: {}, ref: any) {
       shortDescription: "A Wordle Game Discord Bot using Discord API and Node.js.",
       redirectIsExternal: true,
       redirectLink: "https://bit.ly/3BW18hd",
-      sourceCodeLink: "https://bit.ly/3BW18hd"
+      sourceCodeLink: "https://github.com/joaovictorbarrera/Barrera-Wordle-Discord-Bot"
     },
     {
       previewImage: "/projects/amazon-sidebar-thumbnail.png",
@@ -59,12 +59,11 @@ function Projects(props: {}, ref: any) {
       sourceCodeLink: "https://github.com/joaovictorbarrera/login-page"
     },
     {
-      disabled: true,
       previewImage: "/projects/quicksort-visualizer-thumbnail.png",
       title: "Quicksort Visualizer",
       shortDescription: "See how quicksort really works with this visualizer tool.",
       redirectLink: "/quicksort-visualizer",
-      sourceCodeLink: ""
+      sourceCodeLink: "https://github.com/joaovictorbarrera/Barrera-QuickSort-Visualizer"
     }
   ]
 

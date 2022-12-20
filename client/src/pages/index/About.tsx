@@ -39,12 +39,12 @@ function AboutContact() {
         colOne: {
             "Name": "Joao Barrera",
             "Phone Number": "+1 (818) 488-0996",
-            "Email": "joao.victor.lotfi@gmail.com"
+            "Last Role": "Junior Web Developer"
         },
         colTwo: {
             "Age": "20",
             "Location": "Winter Garden, FL",
-            "Personal Experience": "2 Years"
+            "Email": "joao.victor.lotfi@gmail.com",
         }
     }
 
