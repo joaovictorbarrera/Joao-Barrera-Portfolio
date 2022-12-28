@@ -1,8 +1,9 @@
 import React from 'react'
 import { json, Link } from 'react-router-dom'
 import AccentButton from '../../components/AccentButton'
+import { useQuery } from "@tanstack/react-query"
 
-interface ProjectCard {
+export interface ProjectCard {
   disabled?: boolean,
   previewImage: string,
   title: string,
@@ -13,59 +14,30 @@ interface ProjectCard {
 }
 
 function Projects(props: {}, ref: any) {
-  const projects: ProjectCard[] = [
-    {
-      previewImage: "/projects/react-shopping-cart-thumbnail.png",
-      title: "React Shopping Cart",
-      shortDescription: "Fake store with a shopping cart web application using React.js.",
-      redirectLink: "/react-shopping-cart",
-      sourceCodeLink: "https://bit.ly/3RWmCQs"
-    },
-    {
-      previewImage: "/projects/wordle-discord-bot-thumbnail.png",
-      title: "Wordle Discord Bot",
-      shortDescription: "A Wordle Game Discord Bot using Discord API and Node.js.",
-      redirectIsExternal: true,
-      redirectLink: "https://bit.ly/3BW18hd",
-      sourceCodeLink: "https://github.com/joaovictorbarrera/Barrera-Wordle-Discord-Bot"
-    },
-    {
-      previewImage: "/projects/amazon-sidebar-thumbnail.png",
-      title: "Amazon Sidebar Clone",
-      shortDescription: "Clone of official amazon sidebar.",
-      redirectLink: "/amazon-sidebar",
-      sourceCodeLink: "https://github.com/joaovictorbarrera/Amazon-Sidebar"
-    },
-    {
-      previewImage: "/projects/toggle-buttons-thumbnail.png",
-      title: "Toggle Buttons",
-      shortDescription: "Custom toggle buttons with authentic source code.",
-      redirectLink: "/toggle-buttons",
-      sourceCodeLink: "https://github.com/joaovictorbarrera/Toggle-Buttons"
-    },
-    {
-      previewImage: "/projects/providers-app-thumbnail.png",
-      title: "Provider's App",
-      shortDescription: "Web App to manipulate, process, and display data for company providers.",
-      redirectLink: "/providers-app",
-      sourceCodeLink: "https://github.com/joaovictorbarrera/ProvidersApp"
-    },
-    {
-      disabled: true,
-      previewImage: "/projects/sample.png",
-      title: "Login Page",
-      shortDescription: "Advanced auth system for registering/login.",
-      redirectLink: "/login-page",
-      sourceCodeLink: "https://github.com/joaovictorbarrera/login-page"
-    },
-    {
-      previewImage: "/projects/quicksort-visualizer-thumbnail.png",
-      title: "Quicksort Visualizer",
-      shortDescription: "See how quicksort really works with this visualizer tool.",
-      redirectLink: "/quicksort-visualizer",
-      sourceCodeLink: "https://github.com/joaovictorbarrera/Barrera-QuickSort-Visualizer"
-    }
-  ]
+  const { data, isLoading, isError } = useQuery(['projects'], () => {
+    return fetch(`${import.meta.env.VITE_BASE_URL ?? ""}/data/projects`)
+    .then(res => res.json())
+  })
+
+  if (isLoading) {
+    return (
+      <section ref={ref} className='projects' id='projects'>
+        <h2>Projects</h2>
+        <p>Loading...</p>
+      </section>
+    )
+  }
+
+  if (isError) {
+    return (
+      <section ref={ref} className='projects' id='projects'>
+        <h2>Projects</h2>
+        <p>Error</p>
+      </section>
+    )
+  }
+
+  const projects: ProjectCard[] = data.projects
 
   return (
     <section ref={ref} className='projects' id='projects'>

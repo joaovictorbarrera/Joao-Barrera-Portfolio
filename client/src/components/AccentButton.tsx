@@ -2,7 +2,7 @@ import React from 'react'
 
 interface AccentButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     text: string,
-    variant ?: string
+    variant ?: null | undefined | "outline"
 }
 
 function AccentButton({text, variant, ...props}: AccentButtonProps) {

@@ -12,7 +12,6 @@ function useScrollOnRedirect(elements: React.RefObject<HTMLElement>[]) {
             const element = elements.find(el => el?.current?.id === query)?.current
 
             if (element) {
-                console.log("scrolled")
                 const timeout = setTimeout(() => element.scrollIntoView({
                     behavior: "smooth"
                 }), 150)

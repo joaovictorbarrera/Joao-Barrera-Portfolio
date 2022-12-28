@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState, useMemo } from 'react'
-import HiddenNavbar from '../../components/HiddenNavbar';
 import './AmazonSidebar.css'
 
 function AmazonSidebar() {

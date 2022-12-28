@@ -1,18 +1,41 @@
 import React from 'react'
 import AccentButton from '../../components/AccentButton'
+import { useQuery } from "@tanstack/react-query"
 
 function About(props: {}, ref: any) {
 
-    const aboutMeLongDescription = `
-        My name is Joao, I'm a Self-taught Software Developer who specializes in web development.
-        The number one quality I like to tell everyone that comes across my profile is that I'm passionate about learning.
-        Learning for me has never been just about working, but all that I do and appreaciate in life.
-    `
-    const aboutMeLongDescription2 =`
+    const { data, isLoading, isError } = useQuery(['about'], () => {
+        return fetch(`${import.meta.env.VITE_BASE_URL ?? ""}/data/about`)
+        .then(res => res.json())
+    })
 
-        Over these past few years I've put all my effort into collecting knowledge and
-        improving my skills towards creating highly functional cool-looking websites.
-    `
+    const aboutData = data?.about
+
+    const aboutMeLongDescription = aboutData?.longDescription1
+    const aboutMeLongDescription2 = aboutData?.longDescription2
+    const personalInfo = aboutData?.personalInfo
+
+    if (isLoading) {
+        return (
+        <section ref={ref} className='about' id='about'>
+            <div style={{display:"flex", flexDirection: "column"}}>
+            <h2>About Me</h2>
+            <p>Error</p>
+            </div>
+        </section>
+        )
+    }
+
+    if (isError) {
+        return (
+        <section ref={ref} className='about' id='about'>
+            <div style={{display:"flex", flexDirection: "column"}}>
+                <h2>About Me</h2>
+                <p>Error</p>
+            </div>
+        </section>
+        )
+    }
 
     return (
         <section ref={ref} className='about' id='about'>
@@ -24,7 +47,7 @@ function About(props: {}, ref: any) {
                     <h2>About Me</h2>
                     <p>{aboutMeLongDescription}</p>
                     <p>{aboutMeLongDescription2}</p>
-                    <AboutContact />
+                    <AboutContact personalInfo={personalInfo}/>
                     <a href="/Joao-Barrera-Resume.pdf" target="_blank">
                         <AccentButton text="View Resume" />
                     </a>
@@ -34,26 +57,22 @@ function About(props: {}, ref: any) {
   )
 }
 
-function AboutContact() {
-    const contactInfo: {[index: string]: {[index: string]: string}} = {
-        colOne: {
-            "Name": "Joao Barrera",
-            "Phone Number": "+1 (818) 488-0996",
-            "Last Role": "Junior Web Developer"
-        },
-        colTwo: {
-            "Age": "20",
-            "Location": "Winter Garden, FL",
-            "Email": "joao.victor.lotfi@gmail.com",
+interface AboutContactProps {
+    personalInfo: {
+        [index: string]: {
+            [index: string]: string
         }
     }
+}
+
+function AboutContact({personalInfo}: AboutContactProps) {
 
     return (
         <section className='about-contact'>
-            {Object.keys(contactInfo).map(col => {
+            {Object.keys(personalInfo).map(col => {
                 return (
                     <ul key={col}>
-                        {Object.entries(contactInfo[col]).map(([key, value]) => {
+                        {Object.entries(personalInfo[col]).map(([key, value]) => {
                             return (
                                 <li key={col+key+value}>
                                     <span key={col+key}>{`${key}: `}</span>
