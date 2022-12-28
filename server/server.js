@@ -10,7 +10,7 @@ require("dotenv").config();
 
 const PORT = 5000
 const app = express()
-const DEV = process.env.NODE_ENV === "dev"
+const DEV = process.env.NODE_ENV === "dev "
 console.log("DEV MODE? "+DEV)
 
 app.use(cors({
@@ -64,7 +64,7 @@ app.post('/file', upload.single('resume-file'), function (req, res) {
     if (file.mimetype !== "application/pdf") return res.sendStatus(400)
 
     console.log(file)
-    fs.copyFileSync(file.path, `${file.destination}\\\\Joao-Barrera-Resume.pdf`)
+    fs.copyFileSync(file.path, path.join(file.destination, "Joao-Barrera-Resume.pdf"))
     fs.rmSync(file.path)
 
    return res.sendStatus(200)
