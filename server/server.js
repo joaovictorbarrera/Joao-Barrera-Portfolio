@@ -63,6 +63,7 @@ app.post('/file', upload.single('resume-file'), function (req, res) {
 
     if (file.mimetype !== "application/pdf") return res.sendStatus(400)
 
+    console.log(file)
     fs.copyFileSync(file.path, `${file.destination}\\\\Joao-Barrera-Resume.pdf`)
     fs.rmSync(file.path)
 

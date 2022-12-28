@@ -47,7 +47,8 @@ function ResumeUpload() {
             <form onSubmit={handleSubmit} style={{display: "flex", flexDirection:"column", alignItems: "flex-start"}}>
                 {/* <input type="hidden" name="auth" value="true" /> */}
                 <label>
-                    Resume: <input type="file" name="resume-file" accept=".pdf" formEncType="multipart/form-data" />
+                    Resume: <input type="file" name="resume-file"
+                    accept=".pdf" formEncType="multipart/form-data" required />
                 </label>
                 <AccentButton variant="outline" type="submit" text="Update" />
             </form>
