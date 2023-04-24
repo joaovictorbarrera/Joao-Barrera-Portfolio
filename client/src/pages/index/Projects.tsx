@@ -2,8 +2,10 @@ import React from 'react'
 import { json, Link } from 'react-router-dom'
 import AccentButton from '../../components/AccentButton'
 import { useQuery } from "@tanstack/react-query"
+import { BASE_URL } from '../../utils/BASE_URL'
 
 export interface ProjectCard {
+  uuid: string,
   disabled?: boolean,
   previewImage: string,
   title: string,
@@ -15,7 +17,7 @@ export interface ProjectCard {
 
 function Projects(props: {}, ref: any) {
   const { data, isLoading, isError } = useQuery(['projects'], () => {
-    return fetch(`${import.meta.env.VITE_BASE_URL ?? ""}/data/projects`)
+    return fetch(`${BASE_URL}/data/projects`)
     .then(res => res.json())
   })
 

@@ -7,6 +7,17 @@ const emailValidator = require("email-validator")
 const multer  = require('multer')
 const cors = require("cors")
 require("dotenv").config();
+const connectDB = require("./DB/connectDB");
+const { postProject, getProjects, deleteProject, putProject } = require('./DB/Projects/projectDBHandler');
+const parseProjectFromBody = require("./DB/Projects/parseProjectFromBody");
+const getAbout = require('./about');
+
+async function runServer() {
+
+// db
+console.log("External db? " + !!process.env.MONGO_URL)
+const mongoURL = process.env.MONGO_URL || "mongodb://127.0.0.1/joao-barrera-portfolio"
+await connectDB(mongoURL)
 
 const PORT = 5000
 const app = express()
@@ -44,13 +55,46 @@ const buildFolder = DEV ?
 app.use(express.static(buildFolder, {index: false}))
 
 app.get('/data/about', (req, res) => {
-    const about = JSON.parse(fs.readFileSync("./about.json"))
-    return res.json(about)
+    return res.json(getAbout())
 })
 
-app.get('/data/projects', (req, res) => {
-    const projects = JSON.parse(fs.readFileSync("./projects.json"))
-    return res.json(projects)
+app.get('/data/projects', async (req, res) => {
+    return res.json({projects: await getProjects()})
+})
+
+app.post('/data/projects', async (req, res) => {
+    try {
+        const project = req.body || {}
+        await postProject(parseProjectFromBody(project))
+        console.log("Succesfully added new project.")
+        return res.sendStatus(200)
+    } catch (e) {
+        return res.sendStatus(400)
+    }
+})
+
+app.put('/data/projects', async (req, res) => {
+    try {
+        const project = req.body || {}
+        await putProject(parseProjectFromBody(project))
+        console.log("Successfully updated project.")
+        return res.sendStatus(200)
+    } catch (e) {
+        console.log(e)
+        return res.sendStatus(400)
+    }
+})
+
+app.delete('/data/projects', async (req, res) => {
+    try {
+        const uuid = req.query.uuid
+        await deleteProject(uuid)
+        console.log("Succesfully deleted project.")
+        return res.sendStatus(200)
+    } catch (e) {
+        console.log(e)
+        return res.sendStatus(404)
+    }
 })
 
 const upload = multer({ dest: buildFolder })
@@ -113,3 +157,7 @@ app.get('/*', (req, res) => {
 })
 
 app.listen(process.env.PORT || PORT, () => console.log("SERVER STARTED"))
+
+}
+
+runServer()

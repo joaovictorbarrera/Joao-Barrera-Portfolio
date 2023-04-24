@@ -1,11 +1,12 @@
 import React from 'react'
 import AccentButton from '../../components/AccentButton'
 import { useQuery } from "@tanstack/react-query"
+import { BASE_URL } from '../../utils/BASE_URL'
 
 function About(props: {}, ref: any) {
 
     const { data, isLoading, isError } = useQuery(['about'], () => {
-        return fetch(`${import.meta.env.VITE_BASE_URL ?? ""}/data/about`)
+        return fetch(`${BASE_URL}/data/about`)
         .then(res => res.json())
     })
 

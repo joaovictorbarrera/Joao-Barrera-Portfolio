@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "cd client && npm install && npm run build && cd ../server && npm install",
-    "start": "cd server && npm run start"
+    "start": "cd server && npm run start",
+    "devc": "cd client && npm run dev",
+    "devs": "cd server && npm run dev"
   },
   "keywords": [],
   "author": "",

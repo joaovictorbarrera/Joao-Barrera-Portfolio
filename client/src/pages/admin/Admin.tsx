@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react"
-import { useQuery, useMutation } from "@tanstack/react-query"
-import { ProjectCard } from "../index/Projects"
-import AccentButton from "../../components/AccentButton"
+import { ResumeUpload } from "./components/ResumeUpload"
+import { ProjectsPanel } from "./components/ProjectsPanel"
 
 function Admin() {
     const [auth, setAuth] = useState<boolean>(false)
@@ -22,67 +21,6 @@ function Admin() {
             <ResumeUpload />
             <ProjectsPanel />
         </div>
-    )
-}
-
-function ResumeUpload() {
-
-    function postResume(formData: FormData) {
-        return fetch(`${import.meta.env.VITE_BASE_URL ?? ""}/file`, {
-            method: "POST",
-            body: formData
-        })
-    }
-
-    const { mutate, status } = useMutation(postResume)
-
-    function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-        e.preventDefault()
-        mutate(new FormData(e.target as HTMLFormElement))
-    }
-
-    return (
-        <section>
-            <h2>Resume</h2>
-            <form onSubmit={handleSubmit} style={{display: "flex", flexDirection:"column", alignItems: "flex-start"}}>
-                {/* <input type="hidden" name="auth" value="true" /> */}
-                <label>
-                    Resume: <input type="file" name="resume-file"
-                    accept=".pdf" formEncType="multipart/form-data" required />
-                </label>
-                <AccentButton variant="outline" type="submit" text="Update" />
-            </form>
-            <span>{status}</span>
-        </section>
-    )
-}
-
-function ProjectsPanel() {
-    const {data, isLoading, isError} = useQuery(['projects'], () => {
-        return fetch(`${import.meta.env.VITE_BASE_URL ?? ""}/data/projects`)
-        .then(res => res.json())
-    })
-
-    if (isError) {
-        return <div>Error</div>
-    }
-
-    const projects: ProjectCard[] = isLoading ? [] : data.projects
-
-    return (
-        <section>
-            <h2>Projects Panel</h2>
-            <ul>
-                {projects.map(project => (
-                    <li key={JSON.stringify(project)}>
-                        <label>
-                            {project.title}
-                            <input type="checkbox" defaultChecked={!project.disabled} name="" id="" />
-                        </label>
-                    </li>
-                ))}
-            </ul>
-        </section>
     )
 }
 
