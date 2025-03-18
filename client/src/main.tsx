@@ -9,7 +9,7 @@ declare global {
 
 window.portfolio = {
   github: "https://github.com/joaovictorbarrera",
-  linkedin: "https://www.linkedin.com/in/joao-barrera-373547145/"
+  linkedin: "https://www.linkedin.com/in/joao-barrera/"
 }
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(

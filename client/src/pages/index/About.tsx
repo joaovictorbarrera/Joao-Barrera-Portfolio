@@ -42,7 +42,7 @@ function About(props: {}, ref: any) {
         <section ref={ref} className='about' id='about'>
             <div>
                 <picture className='about-picture-wrapper'>
-                <img src="/full body.png" alt="me" />
+                <img src="/full-body.jpg" alt="me" />
                 </picture>
                 <article className='about-description'>
                     <h2>About Me</h2>
